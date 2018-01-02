@@ -1,0 +1,61 @@
+package data;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import entities.Action;
+
+@Transactional
+@Repository
+public class ActionDAOImpl {
+	
+	
+	@PersistenceContext
+	private EntityManager em;
+	
+	@Override
+	public List<Action> index() {
+		String query = "Select a from Action a";
+		return em.createQuery(query, Action.class).getResultList();
+	}
+
+	
+	@Override
+	public Action show(int id) {
+		return em.find(Action.class, id);
+	}
+
+	@Override
+	public Miles create(Miles miles) {
+		em.persist(miles);
+		em.flush();
+		return miles;
+	}
+
+	@Override
+	public Miles update(int id, Miles miles) {
+		Miles m = em.find(Miles.class, id);
+		m.setStartMiles(miles.getStartMiles());
+		m.setEndMiles(miles.getEndMiles());
+		m.setDate(miles.getDate());
+		return m;
+	}
+
+	@Override
+	public boolean destroy(int id) {
+		Miles m = em.find(Miles.class, id);
+		
+		if(em.find(Miles.class, id) == null) {
+			return false;
+		} else {
+			em.remove(m);
+			return true;
+		}
+	}
+
+}
