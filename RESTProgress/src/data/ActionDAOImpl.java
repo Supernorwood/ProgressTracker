@@ -47,7 +47,7 @@ public class ActionDAOImpl implements ActionDAO{
 	}
 
 	@Override
-	public boolean destroy(int id) {
+	public Boolean destroy(int id) {
 		Action a = em.find(Action.class, id);
 		
 		if(em.find(Action.class, id) == null) {

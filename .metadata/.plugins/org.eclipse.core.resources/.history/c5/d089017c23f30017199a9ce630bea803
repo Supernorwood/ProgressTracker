@@ -1,0 +1,8 @@
+angular.module('appModule')
+.factory('progressService', function($http) {
+  var service = {};
+  
+  var actions = [];
+  
+  return service;
+})

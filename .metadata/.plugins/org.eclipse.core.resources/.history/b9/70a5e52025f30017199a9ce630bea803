@@ -1,0 +1,12 @@
+angular.module('appModule')
+.component('progressList', {
+    templateUrl : 'app/appModule/progressList/todoList.component.html',
+    
+     controller : function(todoService) {
+    var vm = this;
+    
+    
+        },
+        controllerAs : 'vm'
+});
+    

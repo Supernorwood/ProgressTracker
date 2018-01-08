@@ -1,0 +1,8 @@
+angular.module('appModule')
+.component('progressList', {
+    templateUrl : 'app/appModule/progressList/todoList.component.html',
+    
+    
+        controllerAs : 'vm'
+});
+    

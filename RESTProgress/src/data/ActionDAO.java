@@ -10,7 +10,7 @@ public interface ActionDAO {
 	public Action show(int id);
 	public Action create(Action action);
 	public Action update(int id, Action action);
-	public boolean destroy(int id);
+	public Boolean destroy(int id);
 	
 
 }

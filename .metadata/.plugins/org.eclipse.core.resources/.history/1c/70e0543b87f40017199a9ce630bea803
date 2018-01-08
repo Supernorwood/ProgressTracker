@@ -1,0 +1,58 @@
+<style>
+.todo-count-label {
+	background: green;
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	color: #fff;
+}
+</style>
+
+<h1>
+	Progress Tracker : <span class="todo-count-label"><em>{{vm.countActions()}}</em></span>
+</h1>
+
+
+<form ng-hide="vm.selected">
+	<input type="text" placeholder="Action" ng-model="newAction.activity" /><br />
+	<input type="text" placeholder="Minutes" ng-model="newAction.minutes" /><br />
+	 <input type="text" placeholder="Date" ng-model="newAction.minutes" /><br /> 
+	<input type="submit" value="Add Activity"
+		ng-click="vm.addAction(newAction); newAction = {}" />
+</form>
+
+<table ng-hide="vm.selected">
+	<thead>
+		<tr>
+			<th>Action</th>
+			<th>Minutes</th>
+			<th>Date</th>
+		
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="action in vm.actions">
+			<td ng-click="vm.displayAction(action)">{{action.activity}}</td>
+			<td ng-click="vm.displayAction(action)">{{action.minutes}}</td>
+			<td ng-click="vm.displayAction(action)">{{action.date}}</td>
+	
+	<!-- 		<td><input type="checkbox" ng-change="vm.updateAction(items)"
+				ng-model="item.complete" /></td>
+			<td>{{todo.completed}}</td> -->
+			
+			<td><input type="button" ng-click="vm.deleteAction(action.id)"
+				placeholder="destroy" /></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<div ng-show="vm.selected && !vm.editAction">
+	<div>Id : {{vm.selected.id}}</div>
+	<div>Task : {{vm.selected.activity}}</div>
+	<div>Desc : {{vm.selected.minutes}}</div>
+	<div>Comp : {{vm.selected.date}}</div>
+	<button ng-click="vm.setEditAction()">Edit</button>
+
+	<button ng-click="vm.displayTable()">Go Back</button>
+</div>

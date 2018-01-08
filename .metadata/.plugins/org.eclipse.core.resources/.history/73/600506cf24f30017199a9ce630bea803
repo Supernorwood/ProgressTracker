@@ -1,0 +1,8 @@
+angular.module('appModule')
+.component('todoList', {
+    templateUrl : 'app/appModule/todoList/todoList.component.html',
+    
+    
+        controllerAs : 'vm'
+});
+    

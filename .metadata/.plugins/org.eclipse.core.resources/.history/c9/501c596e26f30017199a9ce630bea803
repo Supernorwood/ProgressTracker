@@ -1,0 +1,25 @@
+angular.module('appModule')
+.component('progressList', {
+    templateUrl : 'app/appModule/progressList/todoList.component.html',
+    
+     controller : function(progressService) {
+    var vm = this;
+    
+    vm.selected = null;
+    
+    vm.editTodo = null;
+    
+    vm.actions = [];
+    
+    var reloadActions = function(){
+        progressService.index()    // returns promise of
+            .then(function(response){         
+                vm.actions = response.data;
+        });
+    };
+    
+    
+        },
+        controllerAs : 'vm'
+});
+    
